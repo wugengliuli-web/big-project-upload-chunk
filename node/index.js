@@ -140,6 +140,8 @@ async function saveFileAction(pathName, fileName, file) {
 
 //创建目录
 function mkdir(filePath, dirName) {
+  const newPath = path.resolve(filePath, dirName);
+  if(checkFile(newPath)) return 
   return new Promise((res, rej) => {
     fs.mkdir(path.resolve(filePath, dirName), (err) => {
       if (err) rej(err);
